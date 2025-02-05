@@ -5,12 +5,10 @@ document.addEventListener('DOMContentLoaded', function () {
     let autoplayInterval;
     const intervalTime = 2500;
 
-
     const gsapDefaults = { duration: 2, ease: 'power4.out' };
 
     function changeActiveSection(index, isClick = false) {
         if (sections[index].classList.contains('active')) return;
-
 
         sections.forEach((section) => {
             section.classList.remove('active');
@@ -23,13 +21,11 @@ document.addEventListener('DOMContentLoaded', function () {
             gsap.to(section.querySelector('.image-small'), { height: '280px', duration: 2, ease: 'power4.out' });
             gsap.set(section, { opacity: 1, display: 'block' });
 
-
             const cardTitle = section.querySelector('.card-title');
             if (cardTitle) {
                 gsap.set(cardTitle, { display: 'block', opacity: 1 });
             }
         });
-
 
         const activeSection = sections[index];
         activeSection.classList.add('active');
@@ -45,8 +41,19 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         gsap.to(activeSection.querySelector('.text_xl'), { opacity: 1, y: 0, ...gsapDefaults, delay: 0.1 });
-        gsap.to(activeSection.querySelector('.text_small'), { opacity: 1, y: 0, duration: 2, ease: 'power4.out', delay: 0.4 });
-        gsap.to(activeSection.querySelector('.image-small'), { height: '450px', width: '350px', duration: 2, ease: 'power2.out' });
+        gsap.to(activeSection.querySelector('.text_small'), {
+            opacity: 1,
+            y: 0,
+            duration: 2,
+            ease: 'power4.out',
+            delay: 0.4,
+        });
+        gsap.to(activeSection.querySelector('.image-small'), {
+            height: '450px',
+            width: '350px',
+            duration: 2,
+            ease: 'power2.out',
+        });
 
         // Hide card-title for the active section
         const activeCardTitle = activeSection.querySelector('.card-title');
