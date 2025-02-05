@@ -2,16 +2,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.flex');
     const sections = Array.from(document.querySelectorAll('.section-1'));
     let currentIndex = 0;
-    // let autoplayInterval;
-    // const intervalTime = 2000;
+    let autoplayInterval;
+    const intervalTime = 2500;
 
-    // Group GSAP setup for common actions
+
     const gsapDefaults = { duration: 2, ease: 'power4.out' };
 
     function changeActiveSection(index, isClick = false) {
         if (sections[index].classList.contains('active')) return;
 
-        // Reset previous active section
+
         sections.forEach((section) => {
             section.classList.remove('active');
             const textWrapper = section.querySelector('.text-wrapper');
@@ -23,14 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
             gsap.to(section.querySelector('.image-small'), { height: '280px', duration: 2, ease: 'power4.out' });
             gsap.set(section, { opacity: 1, display: 'block' });
 
-            // Show card-title for inactive sections
+
             const cardTitle = section.querySelector('.card-title');
             if (cardTitle) {
                 gsap.set(cardTitle, { display: 'block', opacity: 1 });
             }
         });
 
-        // Set new active section
+
         const activeSection = sections[index];
         activeSection.classList.add('active');
         gsap.set(activeSection, { opacity: 0, display: 'block' });
