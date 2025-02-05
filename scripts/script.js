@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
         gsap.set(activeSection, { opacity: 0, display: 'block' });
         container.prepend(activeSection);
 
-        // Animations for active section
         gsap.to(activeSection, { opacity: 1, ...gsapDefaults });
 
         const textWrapper = activeSection.querySelector('.text-wrapper');
