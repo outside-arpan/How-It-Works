@@ -1,0 +1,328 @@
+// VARIABLES
+$black: #000;
+$grey: #dbdbdb;
+$font-mono: 'PPRightSerifMono', sans-serif;
+$font-regular: 'PPRightSerifMonoRegular', sans-serif;
+$body-font: 'HankenGrotesk';
+$gap-xl: 150px;
+$font-h2: 46.6px;
+$font-h4: 21.96px;
+$font-p: 17.2px;
+$font-weight-light: 300;
+$font-h6: 13.5px;
+$padding-y-med: 15px 0;
+$padding-x-med: 0 15px;
+$text-black: #1e1e1e;
+$font-weight-medium: 500;
+$small-letter-space: 0.1em;
+$main-padding: 50px;
+h2 {
+  font-size: $font-h2;
+}
+
+h4 {
+  font-size: $font-h4;
+}
+h6 {
+  font-size: $font-h6;
+  font-family: $body-font;
+  font-weight: $font-weight-light;
+}
+p {
+  font-size: $font-p;
+  letter-spacing: 0.1em;
+  font-weight: $font-weight-light;
+}
+body {
+  h2,
+  h4,
+  h6,
+  p {
+    color: $text-black;
+  }
+}
+.font-weight-light {
+  font-weight: 300;
+}
+.font-weight-medium {
+  font-weight: $font-weight-medium;
+}
+// FONT-FACE
+@font-face {
+  font-family: 'PPRightSerifMono';
+  src: url('fonts/PPRightSerifMono-Fine.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'PPRightSerifMonoRegular';
+  src: url('fonts/PPRightSerifMono-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HankenGrotesk';
+  src: url('fonts/HankenGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
+// MIXINS
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+.flex-center-start {
+  @include flex($justify: center, $align: flex-start);
+}
+// GLOBAL STYLES
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// UTILITY CLASSES
+.main-padding {
+  padding: $main-padding;
+
+  @media (max-width: 767px) {
+    padding: 20px;
+  }
+}
+.small-letter-spacing {
+  letter-spacing: $small-letter-space;
+}
+.lh-small {
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1600px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+.padding-y-med {
+  padding: $padding-y-med;
+}
+.padding-x-med {
+  padding: $padding-x-med;
+}
+.padding-large {
+  padding: 35px 0;
+}
+
+// .width-25 {
+//   width: 25%;
+// }
+.width-25 {
+  width: 25%;
+  @media (min-width: 767px) {
+    width: 330px;
+  }
+}
+.flex-2 {
+  @include flex;
+  flex: 2;
+}
+.section {
+  width: 16.667%; // Default width for inactive sections
+
+  &.active {
+    width: 66.67%; // Default width for active section
+
+    @media (max-width: 1440px) {
+      width: 100%; // Full width when screen is smaller than 1440px
+    }
+  }
+
+  // Additional media queries for sections
+  @media (max-width: 1024px) {
+    width: 48%; // 50% width for all sections on screens smaller than 1024px
+  }
+}
+.flex-wrap-wrap {
+  @media (max-width: 1400px) {
+    flex-wrap: wrap; // Apply wrap behavior on smaller screens
+  }
+}
+.margin-large {
+  margin: 50px 0;
+}
+.margin-auto-large {
+  margin: 30px auto;
+}
+.margin-med {
+  margin: 30px 0;
+}
+
+.bar-height {
+  height: 1px;
+}
+
+.bg-grey,
+.progress-bar.bg-grey {
+  background-color: $grey;
+}
+
+.active {
+  .background-black {
+    background-color: $black;
+  }
+
+  .image-small {
+    width: 350px;
+    height: 450px;
+  }
+}
+
+.flex {
+  @include flex;
+}
+.flex-center-start {
+  @include flex($justify: center, $align: flex-start);
+}
+.font-color-black {
+  color: #1e1e1e;
+}
+
+.progress-padding {
+  padding: 18px 0;
+}
+
+.heading-bottom-margin {
+  margin-bottom: 35px;
+}
+
+// FONTS
+.font-mono {
+  font-family: $font-mono;
+}
+
+.font-normal {
+  font-weight: 500;
+}
+
+.body-font {
+  font-family: $body-font;
+}
+
+.body-font-size {
+  font-size: 12.9px;
+}
+
+.font-regular {
+  font-family: $font-regular;
+}
+
+// IMAGE SIZES
+.image-small {
+  // width: 230px;
+  height: 285px;
+}
+
+// FONT SIZES
+.font_small {
+  font-size: 12px;
+}
+
+.font_xl {
+  font-size: 34.92px;
+}
+
+// GAPS
+.gap_xl {
+  gap: $gap-xl;
+  @media (max-width: 1024px) {
+    gap: 50px; // 50% width for all sections on screens smaller than 1024px
+  }
+}
+
+.gap-25 {
+  gap: 25px;
+}
+
+// ACTIVE SECTION
+.active_section {
+  .active-hidden {
+    display: none;
+  }
+}
+
+
+@media (max-width: 1400px) {
+  .slider-wrapper {
+    overflow: hidden;
+  }
+
+  .slider {
+    display: flex;
+    flex-direction: row;
+    width: 300%; /* Assuming 3 sections are being shown at once */
+  }
+
+  .section {
+    width: 100%; /* Each section takes up full width */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image-small {
+    height: auto;
+    width: 100%;
+  }
+
+  .text-wrapper {
+    opacity: 1; /* Make sure the text is visible */
+    display: block;
+  }
+
+  /* Hide text initially when active section */
+  .section:not(.active) .text-wrapper {
+    opacity: 0;
+    display: none;
+  }
+}
+/* Default view (multiple sections visible) */
+.slider {
+  display: flex;
+  gap: 25px;
+  /* other styles */
+}
+
+@media (max-width: 1400px) {
+  /* Make slider single section visible at a time */
+  .slider {
+    overflow: hidden;
+  }
+
+  .slider-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .slider {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .section {
+    flex-shrink: 0;
+    width: 100%;
+    opacity: 0; /* Hide all sections initially */
+    transform: translateX(100%); /* Move out of view */
+    transition: all 0.5s ease-in-out; /* Smooth transition */
+  }
+
+  .section.active {
+    opacity: 1;
+    transform: translateX(0); /* Bring active section into view */
+  }
+}
