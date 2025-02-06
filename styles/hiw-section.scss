@@ -104,7 +104,6 @@ body {
 img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 // UTILITY CLASSES
@@ -144,12 +143,11 @@ img {
   flex: 2;
 }
 .section {
-  width: 16.667%; 
+  width: 16.667%;
 
   &.active {
     width: 66.67%;
 
-    
     @media (max-width: 1024px) {
       width: 100%;
     }
@@ -197,7 +195,7 @@ img {
     // Apply width 100% for screens less than 576px
     @media (max-width: 767px) {
       width: 100%;
-      height: auto; 
+      height: auto;
     }
   }
 }
@@ -281,7 +279,7 @@ img {
 }
 .section {
   min-height: 450px;
-  height: 450px;
+  height: 500px;
   overflow: hidden;
   position: relative;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), height 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -293,8 +291,7 @@ img {
 
 .image-small {
   object-fit: cover;
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section .text-wrapper {
@@ -312,7 +309,7 @@ img {
 
 .section.active .text-wrapper {
   opacity: 1;
-  min-width: 200px;
+  // min-width: 200px;
   width: auto;
 }
 
@@ -359,4 +356,37 @@ img {
       display: none;
     }
   }
+}
+
+.text-wrapper {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transform: scale(0.98); // Subtle zoom effect instead of translation
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+
+  @media (min-width: 1024px) {
+    height: auto;
+    overflow: visible;
+  }
+
+  @media (max-width: 1023px) {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    height: auto;
+    pointer-events: all;
+  }
+}
+
+.section.active .text-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: all;
+  height: auto;
+  transition-delay: 0.5s;
+  transition-duration: 0.5s;
 }

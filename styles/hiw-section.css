@@ -77,8 +77,6 @@ body p {
 img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .main-padding {
@@ -264,7 +262,7 @@ img {
 
 .section {
   min-height: 450px;
-  height: 450px;
+  height: 500px;
   overflow: hidden;
   position: relative;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1), height 1s cubic-bezier(0.4, 0, 0.2, 1);
@@ -278,7 +276,7 @@ img {
 .image-small {
   -o-object-fit: cover;
      object-fit: cover;
-  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1), height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section .text-wrapper {
@@ -297,7 +295,6 @@ img {
 
 .section.active .text-wrapper {
   opacity: 1;
-  min-width: 200px;
   width: auto;
 }
 
@@ -336,4 +333,38 @@ img {
   .active_section .active-hidden {
     display: none;
   }
+}
+.text-wrapper {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transform: scale(0.98);
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .text-wrapper {
+    height: auto;
+    overflow: visible;
+  }
+}
+@media (max-width: 1023px) {
+  .text-wrapper {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    height: auto;
+    pointer-events: all;
+  }
+}
+
+.section.active .text-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: all;
+  height: auto;
+  transition-delay: 0.5s;
+  transition-duration: 0.5s;
 }/*# sourceMappingURL=hiw-section.css.map */
