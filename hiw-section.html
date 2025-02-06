@@ -16,12 +16,14 @@
       </div>
 
       <!-- Sections Wrapper -->
-      <section class="flex gap-25 align-items-start slider-container">
+      <section
+        class="flex gap-4 align-items-start slider-container flex-md-column flex-sm-column flex-column flex-lg-row"
+      >
         <!-- Section 1 -->
         <div class="section section-1 active_section">
           <div class="progress-bar bar-height bg-grey" aria-label="Progress bar">
             <div
-              class="progress-fill background-black width-25 bar-height"
+              class="progress-fill background-black bar-height"
               role="progressbar"
               aria-valuemin="0"
               aria-valuemax="100"
@@ -35,7 +37,7 @@
               <h6 class="small-letter-spacing font-weight-light">Base maps</h6>
             </div>
           </div>
-          <div class="flex gap_xl padding-y-med flex-center-start">
+          <div class="flex gap_xl padding-y-med flex-center-start flex-column flex-md-row">
             <figure class="image-small active">
               <picture>
                 <source srcset="images/image1.webp" type="image/webp" />
@@ -61,7 +63,7 @@
         <div class="section section-1 active_section section-2">
           <div class="progress-bar bar-height bg-grey" aria-label="Progress bar">
             <div
-              class="progress-fill background-black width-25 bar-height"
+              class="progress-fill background-black bar-height"
               role="progressbar"
               aria-valuemin="0"
               aria-valuemax="100"
@@ -75,7 +77,7 @@
               <h6 class="small-letter-spacing font-weight-light">Sensor data</h6>
             </div>
           </div>
-          <div class="flex gap_xl padding-y-med flex-center-start">
+          <div class="flex gap_xl padding-y-med flex-center-start flex-column flex-md-row">
             <figure class="image-small active">
               <picture>
                 <source srcset="images/image2.webp" type="image/webp" />
@@ -101,7 +103,7 @@
         <div class="section section-1 active_section section-3">
           <div class="progress-bar bar-height bg-grey" aria-label="Progress bar">
             <div
-              class="progress-fill background-black width-25 bar-height"
+              class="progress-fill background-black bar-height"
               role="progressbar"
               aria-valuemin="0"
               aria-valuemax="100"
@@ -115,7 +117,7 @@
               <h6 class="small-letter-spacing font-weight-light">AI intelligence</h6>
             </div>
           </div>
-          <div class="flex gap_xl padding-y-med flex-center-start">
+          <div class="flex gap_xl padding-y-med flex-center-start flex-column flex-md-row">
             <figure class="image-small active">
               <picture>
                 <source srcset="images/image3.webp" type="image/webp" />
@@ -138,10 +140,22 @@
         </div>
       </section>
       <!-- End of Sections Wrapper -->
+      <div class="cta-btn mt-5">
+        <button
+          type="button"
+          class="p-0 fw-semibold btn btn-link flex gap-3 align-items-center position-relative text-decoration-none"
+        >
+          WATCH TERN WORK
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 20 20" fill="none">
+            <rect x="4" y="4" width="12" height="12" fill="#1E1E1E" />
+          </svg>
+        </button>
+      </div>
     </main>
     <!-- End of Main Container -->
     <!-- Bootstrap JS  -->
-    <script src="scripts/script.js" defer></script>
+
+    <script src="scripts/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

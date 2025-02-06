@@ -1,91 +1,60 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const container = document.querySelector('.flex');
-    const sections = Array.from(document.querySelectorAll('.section-1'));
-    let currentIndex = 0;
-    // let autoplayInterval;
-    // const intervalTime = 2500;
+const sections = document.querySelectorAll('.section');
+let currentIndex = 0;
+let timeout;
 
-    const gsapDefaults = { duration: 2, ease: 'power4.out' };
+function isDesktop() {
+    return window.innerWidth >= 1024;
+}
 
-    function changeActiveSection(index, isClick = false) {
-        if (sections[index].classList.contains('active')) return;
+function startProgressAnimation(index) {
+    if (!isDesktop()) return;
 
-        sections.forEach((section) => {
-            section.classList.remove('active');
-            const textWrapper = section.querySelector('.text-wrapper');
-            if (textWrapper) gsap.set(textWrapper, { display: 'none', opacity: 0 });
+    clearTimeout(timeout);
 
-            const textH6 = section.querySelector('.font-mono h6');
-            if (textH6) gsap.set(textH6, { display: 'block', opacity: 1 });
-
-            gsap.to(section.querySelector('.image-small'), { height: '280px', duration: 2, ease: 'power4.out' });
-            gsap.set(section, { opacity: 1, display: 'block' });
-
-            const cardTitle = section.querySelector('.card-title');
-            if (cardTitle) {
-                gsap.set(cardTitle, { display: 'block', opacity: 1 });
-            }
-        });
-
-        const activeSection = sections[index];
-        activeSection.classList.add('active');
-        gsap.set(activeSection, { opacity: 0, display: 'block' });
-        container.prepend(activeSection);
-
-        gsap.to(activeSection, { opacity: 1, ...gsapDefaults });
-
-        const textWrapper = activeSection.querySelector('.text-wrapper');
-        if (textWrapper) {
-            gsap.set(textWrapper, { display: 'block', opacity: 0 });
-            gsap.to(textWrapper, { opacity: 1, duration: 1.5, ease: 'power4.out', delay: 0.2 });
-        }
-
-        gsap.to(activeSection.querySelector('.text_xl'), { opacity: 1, y: 0, ...gsapDefaults, delay: 0.1 });
-        gsap.to(activeSection.querySelector('.text_small'), {
-            opacity: 1,
-            y: 0,
-            duration: 2,
-            ease: 'power4.out',
-            delay: 0.4,
-        });
-        gsap.to(activeSection.querySelector('.image-small'), {
-            height: '450px',
-            width: '350px',
-            duration: 2,
-            ease: 'power2.out',
-        });
-
-        // Hide card-title for the active section
-        const activeCardTitle = activeSection.querySelector('.card-title');
-        if (activeCardTitle) {
-            gsap.set(activeCardTitle, { display: 'none', opacity: 0 });
-        }
-
-        currentIndex = (index + 1) % sections.length;
-
-        if (isClick) {
-            stopAutoplay();
-            setTimeout(startAutoplay, 3000);
-        }
-    }
-
-    function startAutoplay() {
-        stopAutoplay();
-        autoplayInterval = setInterval(() => changeActiveSection(currentIndex), intervalTime);
-    }
-
-    function stopAutoplay() {
-        clearInterval(autoplayInterval);
-    }
-
-    // Event listeners
-    container.addEventListener('mouseenter', stopAutoplay);
-    container.addEventListener('mouseleave', startAutoplay);
-
-    sections.forEach((section, index) => {
-        section.addEventListener('click', () => changeActiveSection(index, true));
+    document.querySelectorAll('.progress-fill').forEach((fill) => {
+        fill.style.transition = 'none';
+        fill.style.width = '0%';
     });
 
-    changeActiveSection(0); // Initialize the first section
-    startAutoplay(); // Start autoplay
+    const activeSection = sections[index];
+    const progressFill = activeSection.querySelector('.progress-fill');
+
+    sections.forEach((sec) => sec.classList.remove('active'));
+    activeSection.classList.add('active');
+
+    setTimeout(() => {
+        progressFill.style.transition = 'width 10s linear';
+        progressFill.style.width = '100%';
+    }, 10);
+
+    timeout = setTimeout(() => {
+        currentIndex = (index + 1) % sections.length;
+        startProgressAnimation(currentIndex);
+    }, 10000); // 10s duration
+}
+
+if (isDesktop()) {
+    startProgressAnimation(currentIndex);
+}
+
+// Click event to manually switch sections
+sections.forEach((section, index) => {
+    section.addEventListener('click', () => {
+        if (isDesktop()) {
+            currentIndex = index;
+            startProgressAnimation(index);
+        }
+    });
+});
+
+window.addEventListener('resize', () => {
+    if (!isDesktop()) {
+        sections.forEach((section) => {
+            const progressBar = section.querySelector('.progress-fill');
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'none'; // Disable transition on mobile
+        });
+    } else {
+        startProgressAnimation(currentIndex);
+    }
 });
