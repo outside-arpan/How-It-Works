@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const container = document.querySelector('.flex');
     const sections = Array.from(document.querySelectorAll('.section-1'));
     let currentIndex = 0;
-    let autoplayInterval;
-    const intervalTime = 2500;
+    // let autoplayInterval;
+    // const intervalTime = 2500;
 
     const gsapDefaults = { duration: 2, ease: 'power4.out' };
 

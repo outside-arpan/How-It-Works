@@ -8,7 +8,7 @@ h4 {
 
 h6 {
   font-size: 13.5px;
-  font-family: 'HankenGrotesk';
+  font-family: "HankenGrotesk";
   font-weight: 300;
 }
 
@@ -34,16 +34,16 @@ body p {
 }
 
 @font-face {
-  font-family: 'PPRightSerifMono';
-  src: url('fonts/PPRightSerifMono-Fine.otf') format('opentype');
+  font-family: "PPRightSerifMono";
+  src: url("fonts/PPRightSerifMono-Fine.otf") format("opentype");
 }
 @font-face {
-  font-family: 'PPRightSerifMonoRegular';
-  src: url('fonts/PPRightSerifMono-Regular.otf') format('opentype');
+  font-family: "PPRightSerifMonoRegular";
+  src: url("fonts/PPRightSerifMono-Regular.otf") format("opentype");
 }
 @font-face {
-  font-family: 'HankenGrotesk';
-  src: url('fonts/HankenGrotesk-VariableFont_wght.ttf') format('opentype');
+  font-family: "HankenGrotesk";
+  src: url("fonts/HankenGrotesk-VariableFont_wght.ttf") format("opentype");
 }
 .flex-center-start {
   display: flex;
@@ -63,7 +63,7 @@ img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 
 .main-padding {
@@ -92,11 +92,11 @@ img {
 }
 
 .padding-y-med {
-  padding: 15px 0;
+  padding: 25px 0;
 }
 
 .padding-x-med {
-  padding: 0 15px;
+  padding: 0 25px;
 }
 
 .padding-large {
@@ -148,7 +148,7 @@ img {
 }
 
 .margin-auto-large {
-  margin: 80px auto;
+  margin: 30px auto;
 }
 
 .margin-med {
@@ -199,7 +199,7 @@ img {
 }
 
 .font-mono {
-  font-family: 'PPRightSerifMono', sans-serif;
+  font-family: "PPRightSerifMono", sans-serif;
 }
 
 .font-normal {
@@ -207,7 +207,7 @@ img {
 }
 
 .body-font {
-  font-family: 'HankenGrotesk';
+  font-family: "HankenGrotesk";
 }
 
 .body-font-size {
@@ -215,7 +215,7 @@ img {
 }
 
 .font-regular {
-  font-family: 'PPRightSerifMonoRegular', sans-serif;
+  font-family: "PPRightSerifMonoRegular", sans-serif;
 }
 
 .image-small {
@@ -245,4 +245,4 @@ img {
 
 .active_section .active-hidden {
   display: none;
-} /*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=hiw-section.css.map */
