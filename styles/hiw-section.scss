@@ -1,3 +1,4 @@
+// @import "~bootstrap/scss/bootstrap";
 // VARIABLES
 $black: #000;
 $grey: #dbdbdb;
@@ -13,6 +14,7 @@ $font-h6: 13.5px;
 $padding-y-med: 15px 0;
 $padding-x-med: 0 15px;
 $text-black: #1e1e1e;
+$font-weight-medium: 500;
 $small-letter-space: 0.1em;
 $main-padding: 50px;
 $btn-link-color: $black;
@@ -59,7 +61,12 @@ body {
     color: $text-black;
   }
 }
-
+.font-weight-light {
+  font-weight: 300;
+}
+.font-weight-medium {
+  font-weight: $font-weight-medium;
+}
 // FONT-FACE
 @font-face {
   font-family: 'PPRightSerifMono';
@@ -74,6 +81,24 @@ body {
 @font-face {
   font-family: 'HankenGrotesk';
   src: url('fonts/HankenGrotesk-VariableFont_wght.ttf') format('opentype');
+}
+
+// MIXINS
+@mixin flex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+.flex-center-start {
+  @include flex($justify: center, $align: flex-start);
+}
+// GLOBAL STYLES
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 img {
@@ -114,6 +139,7 @@ img {
 }
 
 .flex-2 {
+  // @include flex;
   flex: 2;
 }
 .section {
@@ -166,11 +192,19 @@ img {
     height: 450px;
     min-width: 350px;
 
+    // Apply width 100% for screens less than 576px
     @media (max-width: 767px) {
       width: 100%;
       height: auto;
     }
   }
+}
+
+.flex {
+  @include flex;
+}
+.flex-center-start {
+  @include flex($justify: center, $align: flex-start);
 }
 .font-color-black {
   color: #1e1e1e;
@@ -264,7 +298,7 @@ img {
   opacity: 0;
   min-width: 0;
   width: 0;
-  transition: opacity 1.5s ease-in-out, width 1.5s ease-in-out;
+  transition: opacity 0.2s ease-in-out, width 0.3s ease-in-out;
   padding: 0;
 
   @media (max-width: 1023px) {
@@ -275,8 +309,8 @@ img {
 
 .section.active .text-wrapper {
   opacity: 1;
+  // min-width: 200px;
   width: auto;
-  transition: opacity 0.8s ease-in-out, width 0.8s ease-in-out;
 }
 
 .gap_xl {
@@ -293,7 +327,7 @@ img {
 }
 
 .section:not(.active) .text-wrapper {
-  transition-delay: 0s;
+  transition-delay: 0.4s;
 }
 
 .active_section {
@@ -327,7 +361,8 @@ img {
 .text-wrapper {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-out, transform 0.8s ease-out;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transform: scale(0.98); // Subtle zoom effect instead of translation
   pointer-events: none;
   height: 0;
   overflow: hidden;
@@ -346,12 +381,12 @@ img {
   }
 }
 
-.section.active .text-wrapper {
-  opacity: 1;
-  visibility: visible;
-  transform: scale(1);
-  pointer-events: all;
-  height: auto;
-  transition-delay: 0.5s;
-  transition-duration: 0.5s;
-}
+// .section.active .text-wrapper {
+//   opacity: 1;
+//   visibility: visible;
+//   transform: scale(1);
+//   pointer-events: all;
+//   height: auto;
+//   transition-delay: 1s;
+//   // transition-duration: 0.5s;
+// }
