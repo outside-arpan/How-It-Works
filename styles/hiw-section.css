@@ -283,8 +283,9 @@ img {
   opacity: 0;
   min-width: 0;
   width: 0;
-  transition: opacity 0.2s ease-in-out, width 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, width 0.8s ease-in-out;
   padding: 0;
+  transition-delay: 0.8s;
 }
 @media (max-width: 1023px) {
   .section .text-wrapper {
@@ -296,6 +297,7 @@ img {
 .section.active .text-wrapper {
   opacity: 1;
   width: auto;
+  visibility: visible;
 }
 
 .gap_xl {
@@ -313,7 +315,7 @@ img {
 }
 
 .section:not(.active) .text-wrapper {
-  transition-delay: 0.4s;
+  transition-delay: 0s;
 }
 
 .active_section .active-hidden {
@@ -337,8 +339,7 @@ img {
 .text-wrapper {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  transform: scale(0.98);
+  transition: opacity 0.3s ease-out, transform 0.8s ease-out;
   pointer-events: none;
   height: 0;
   overflow: hidden;
